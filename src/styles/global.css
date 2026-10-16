@@ -1,1 +1,19 @@
 @import "tailwindcss";
+
+@theme {
+  --color-purple-main: #5E1B67;
+  --color-purple-light: #6B1D73;
+  --color-cyan: #00B5B5;
+  --color-cyan-light: #00C2CB;
+  --color-yellow: #FFDE00;
+  --color-magenta: #E6007E;
+  --color-bg-dark: #0E0E0E;
+  --color-bg-light: #F4F4F6;
+}
+
+.grid-pattern {
+  background-image: 
+    linear-gradient(to right, #e0e0e0 1px, transparent 1px),
+    linear-gradient(to bottom, #e0e0e0 1px, transparent 1px);
+  background-size: 20px 20px;
+}
