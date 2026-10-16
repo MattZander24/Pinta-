@@ -1,0 +1,18 @@
+# Reglas de Proyecto: Pinta?
+
+## Contexto y Tech Stack
+- Framework: Astro (v4+)
+- Componentes interactivos: React (únicamente cuando se requiera estado o 3D)
+- Estilos: Tailwind CSS
+- Animaciones: GSAP + ScrollTrigger, Lenis (Smooth Scroll)
+- Gráficos 3D: Three.js (o React Three Fiber)
+
+## Principios de Código en Astro
+1. Preferir componentes `.astro` nativos y scripts `<script>` directos antes que envolver todo en React.
+2. Si creas un componente interactivo de React, usa las directivas de hidratación correspondientes en Astro (`client:visible`, `client:idle`, `client:only="react"`).
+3. Todo código que use `window`, `document` o GSAP en componentes Astro debe ir dentro de una etiqueta `<script>` del cliente para evitar errores durante el Server-Side Rendering (SSR).
+
+## Reglas para Animaciones (GSAP y Canvas)
+1. Para la estela del mouse (mouse trail), usa `requestAnimationFrame` o `gsap.quickSetter` para maximizar rendimiento y evitar reflows.
+2. En la sección Misión, estructurar GSAP ScrollTrigger con `pin: true` y `scrub: true`.
+3. Siempre realizar la limpieza (`kill()`) de los triggers y timelines de GSAP al desmontar componentes si aplica.

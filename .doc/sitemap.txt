@@ -1,0 +1,16 @@
+/home
+|   |
+|   v
+|   #bienvenida: Solo un texto: Welcome to X
+|   |
+|   v
+|   #portfolio: Título 'Portfoio' y debajo cuatro opciones (botones): Graphic design, 3d modeling, motion graphics y clientes. Haciendo hover en cada opción    |   se muestra una muestra de cada tipo de trabajo. Haciendo clic en cada opción nos vamos a otra página (/creaciones) donde se despliegan todos los trabajos de |   cada tipo en una grilla. También hay un selector para moverse por los otros tipos de trabajo.
+|   |
+|   v
+|   #misión: Bajamos hasta una sección donde está el logo de la empresa. El scroll se para cuando el logo queda en el medio y si seguimos scrolleando se abre el |   logo a la mitad y emerge un texto explicando la misión y visión de la empresa.
+|   |
+|   v
+|   #contacto: Un formulario con Nombre, Email y Consulta. Un botón de enviar.
+|
+v
+/creaciones: Ya descrito.
