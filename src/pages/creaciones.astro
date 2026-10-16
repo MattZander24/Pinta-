@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CreationsGrid from '../components/creaciones/CreationsGrid.astro';
+
+const categoria = Astro.url.searchParams.get('categoria') || 'all';
+---
+
+<Layout title="Creaciones - PINTA?">
+  <div class="min-h-screen bg-bg-light grid-pattern py-16">
+    <div class="container mx-auto px-8">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-12">
+        <!-- Sticker CREACIONES -->
+        <div class="bg-purple-main text-white px-8 py-4 rounded-xl shadow-lg">
+          <h1 class="text-3xl font-bold">CREACIONES</h1>
+        </div>
+
+        <!-- Dropdown selector de categorías -->
+        <div class="flex flex-col gap-3">
+          <select 
+            id="categoria-selector"
+            class="px-6 py-3 border-2 border-purple-main rounded-lg bg-white text-gray-700 font-bold focus:outline-none focus:border-cyan"
+          >
+            <option value="all" selected={categoria === "all"}>Todas las categorías</option>
+            <option value="graphic-design" selected={categoria === "graphic-design"}>Graphic Design</option>
+            <option value="3d-modeling" selected={categoria === "3d-modeling"}>3D Modeling</option>
+            <option value="motion-graphics" selected={categoria === "motion-graphics"}>Motion Graphics</option>
+            <option value="clientes" selected={categoria === "clientes"}>Clientes</option>
+          </select>
+          
+          <!-- Botón volver al home -->
+          <a href="/" class="bg-purple-main text-white px-6 py-3 rounded-lg font-bold text-center hover:bg-purple-light transition-colors shadow-lg">
+            Volver
+          </a>
+        </div>
+      </div>
+
+      <!-- Grilla de creaciones -->
+      <CreationsGrid categoria={categoria} />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const select = document.getElementById('categoria-selector');
+  if (select) {
+    select.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement;
+      const categoria = target.value;
+      window.location.href = `/creaciones?categoria=${categoria}`;
+    });
+  }
+</script>
