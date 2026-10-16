@@ -1,0 +1,12 @@
+INICIAR SERVIDOR:
+npm run dev
+
+DETENER SERVIDOR:
+Ctrl+C
+s o y
+
+OTROS ATAJOS RÁPIDOS:
+o : Abre automáticamente el proyecto en tu navegador predeterminado.
+h : Muestra la lista de atajos y ayuda.
+c : Limpia la pantalla de la consola.
+q : Apaga el servidor (alternativa a Ctrl + C).
