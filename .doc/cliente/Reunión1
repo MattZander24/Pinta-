@@ -1,0 +1,5 @@
+Tras una reunión con el cliente, se ha acordado lo siguiente:
+* Para el componente de contacto se utilizará el Servicio Externo Directo (Web3Forms / Formspree).
+* El deploy se hará en Vercel.
+
+Por ende, no se necesita adquirir ningún dominio para el proyecto. Todo será gratuito.
