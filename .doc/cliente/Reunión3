@@ -1,0 +1,14 @@
+Tipografía utilizada: Adelphi PE Variable.
+
+La misma es propietaria de adobe, por lo tanto vamos a usar una alternativa similar mientras desarrollamos.
+
+Tipografía alternativa: Outfit (https://fonts.google.com/specimen/Outfit?preview.script=Latn)
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap" rel="stylesheet">
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500; /* Medium */
+}
