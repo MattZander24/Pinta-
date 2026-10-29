@@ -1,4 +1,4 @@
-# Instrucciones de Prueba - Landing Page PINTA?
+# Instrucciones de Prueba - Landing Page PINTA? (Versión 2 con Assets)
 
 ## Iniciar el Servidor de Desarrollo
 
@@ -13,35 +13,48 @@ El servidor estará disponible en: http://localhost:4321
 ## Verificar la Página Principal
 
 ### 1. Sección Hero (#bienvenida)
-- **Banner de colores:** Verifica que aparezca una barra superior con tres colores (Cian, Amarillo, Magenta)
-- **Título principal:** Debe mostrar "WELCOME TO PINTA?" con estética de sticker púrpura
-- **Efecto de corte de papel:** El título debe tener un efecto de sombra/superposición
-- **Placeholders flotantes:** Debes ver círculos animados representando claqueta, discos y stickers
-- **Fondo:** Debe tener un patrón de cuadrícula (notebook) en color claro
+- **Fondo de textura:** Debe mostrar la imagen de fondo de periódico (`/assets/inicio/InicioBack.png`)
+- **Título principal:** Debe mostrar el sticker "WELCOME TO PINTA?" (`/assets/inicio/InicioStick.png`)
+- **Stickers flotantes:** Debes ver los stickers posicionados alrededor del título:
+  - Labios (`boca-1.png`, `boca-2.png`)
+  - Estrellas (`star-2.png`)
+  - Claqueta/vinilo (`ExpeStic.png`)
+- **Animaciones:** Los stickers deben tener animaciones suaves (bounce, pulse)
 
 ### 2. Sección Portfolio (#portfolio)
-- **Fondo oscuro:** La sección debe tener fondo negro/oscuro
-- **Título PORTFOLIO:** Debe aparecer centrado y destacado
+- **Fondo:** Debe mostrar la imagen de fondo (`/assets/portfolio/BG-PORTFOLIO.png`)
+- **Título PORTFOLIO:** Debe aparecer como imagen (`/assets/portfolio/BANNER-PORTFOLIO.png`)
 - **4 botones verticales:**
   - Graphic Design > (púrpura)
   - 3D Modeling > (magenta)
   - Motion Graphics > (cian)
   - Clientes > (amarillo)
-- **Efecto hover:** Al pasar el cursor sobre cada botón, debe haber un efecto visual (borde blanco, movimiento)
-- **Contenedor de vista previa:** A la derecha debe aparecer un contenedor con placeholder para vista previa
+- **Efecto hover interactivo:**
+  - Al pasar el cursor sobre cada botón, el contenedor derecho debe cambiar de color y mostrar información de la categoría
+  - Transición suave (fade) entre previews
 - **Navegación:** Al hacer clic en cada botón, debe redirigir a `/creaciones?categoria=[categoria]`
 
-### 3. Sección Misión (#mision)
-- **Fondo claro con cuadrícula:** Patrón de cuadrícula similar a Hero
-- **Stickers decorativos:** Debes ver círculos de colores decorativos (estrellas, labios, coronas - placeholders)
-- **Logo PINTA?:** El logo debe aparecer dividido en dos mitades (superior e inferior)
+### 3. Sección Misión (#mision) - **NUEVA ANIMACIÓN GSAP**
+- **Fondo:** Debe mostrar la imagen de cuadrícula (`/assets/mision/BG-PINTA.png`)
+- **Stickers decorativos:** Debes ver los stickers de `/assets/mision/stickers/`:
+  - Coronas (`crown.png`)
+  - Corazones (`heart.png`)
+  - Rayos (`lightnin.png`)
+  - Labios (`mouth.png`)
+  - Estrellas (`star-1.png` a `star-4.png`)
+- **Logo PINTA?:** Debe mostrar la imagen del logo (`/assets/mision/logo.png`)
+- **Animación GSAP ScrollTrigger:**
+  - Al scrollear hasta la sección, el scroll debe fijarse (pin) cuando el logo está centrado
+  - El logo debe animarse (escalar y desvanecerse) al continuar scrolleando
+  - El texto "DISFRUTAR ES PARTE DEL PROCESO" debe revelarse gradualmente
+  - El scroll debe liberarse al finalizar la animación
 - **Texto revelado:**
   - Título: "DISFRUTAR ES PARTE DEL PROCESO"
   - Bajada: Texto explicativo sobre la agencia
-- **Efecto hover en logo:** Al pasar el cursor sobre las mitades del logo, deben separarse ligeramente
 
 ### 4. Sección Contacto (#contacto)
-- **Título destacado:** "HABLA CON PINTA?" en botón/etiqueta turquesa
+- **Fondo:** Debe mostrar la imagen de fondo (`/assets/contacto/BG-CONTACTO.png`)
+- **Título destacado:** Debe mostrar el sticker "HABLA CON PINTA?" (`/assets/contacto/BANNER-CONTACTO.png`)
 - **Formulario con 3 campos:**
   - Nombre (input text)
   - Email (input email)
@@ -51,6 +64,7 @@ El servidor estará disponible en: http://localhost:4321
   - Logo "PINTA?"
   - Slogan "Disfrutar es parte del proceso"
   - Redes sociales "@agenciapinta"
+  - Stickers decorativos de estrellas (`/assets/contacto/STARS/`)
 
 ## Verificar la Página de Creaciones
 
@@ -60,19 +74,23 @@ El servidor estará disponible en: http://localhost:4321
 
 ### Página Creaciones
 - **Header:**
-  - Sticker "CREACIONES" en la esquina superior izquierda
+  - Sticker "CREACIONES" en la esquina superior izquierda (placeholder por ahora)
   - Dropdown selector de categorías en la esquina superior derecha
 - **Dropdown:**
   - Opciones: Todas las categorías, Graphic Design, 3D Modeling, Motion Graphics, Clientes
   - Al cambiar la selección, la URL debe actualizarse con el parámetro `?categoria=...`
+  - La grilla debe filtrarse dinámicamente según la categoría seleccionada
 - **Grilla de tarjetas:**
-  - 3 tarjetas en horizontal
+  - 3 tarjetas en horizontal (o menos si se filtra por categoría)
   - Cada tarjeta con estilo oscuro/púrpura y borde superior redondeado
-  - Placeholders de preview:
-    - Nintendo Switch 3D
-    - Cámara Vintage
-    - Granada Pinta
+  - Placeholders de preview (por ahora, hasta tener renders finales):
+    - Nintendo Switch 3D (3D Modeling)
+    - Cámara Vintage (Graphic Design)
+    - Granada Pinta (Motion Graphics)
   - Efecto hover: sombra aumentada
+- **Filtrado dinámico:**
+  - Al seleccionar una categoría, solo deben mostrarse los proyectos de esa categoría
+  - Si no hay proyectos en una categoría, debe mostrar mensaje "No hay proyectos en esta categoría"
 
 ## Verificar Build
 
@@ -94,20 +112,30 @@ El comando debe completarse exitosamente sin errores.
 ## Notas Importantes
 
 - **Desktop Only:** Esta versión está diseñada exclusivamente para escritorio. No se ha implementado responsive móvil.
-- **Placeholders:** Los elementos visuales (claqueta, discos, stickers, previews) son placeholders CSS/SVG simples que serán reemplazados por assets finales.
-- **Animación GSAP:** La sección Misión tiene la estructura HTML preparada para animación GSAP, pero la animación no está implementada en esta versión.
+- **Assets integrados:** Los elementos visuales ahora usan imágenes reales de `/public/assets/`
+- **Placeholders temporales:** Portfolio y Creaciones aún usan placeholders para previews hasta tener renders finales
+- **Animación GSAP:** La sección Misión implementa animación GSAP con ScrollTrigger
+- **React Components:** Portfolio y CreationsGrid ahora son componentes React (.jsx) para lógica interactiva
 - **Formulario:** El formulario de contacto es solo visual (frontend), no tiene backend funcional.
 - **Colores personalizados:** Se usa Tailwind CSS v4 con configuración `@theme` en `src/styles/global.css`.
+- **GSAP CDN:** GSAP y ScrollTrigger se cargan desde CDN en el Layout global
 
 ## Checklist de Verificación
 
 - [ ] Servidor de desarrollo inicia correctamente
 - [ ] Página principal carga en http://localhost:4321
-- [ ] Sección Hero muestra banner de colores y título
-- [ ] Sección Portfolio muestra 4 botones interactivos
+- [ ] Sección Hero muestra fondo de textura y sticker principal
+- [ ] Sección Hero muestra stickers flotantes animados
+- [ ] Sección Portfolio muestra fondo y título como imágenes
+- [ ] Sección Portfolio muestra 4 botones interactivos con hover
+- [ ] Efecto hover en Portfolio cambia el preview derecho
 - [ ] Navegación a /creaciones funciona desde Portfolio
-- [ ] Sección Misión muestra logo y texto
-- [ ] Sección Contacto muestra formulario y footer
-- [ ] Página creaciones muestra grilla de 3 tarjetas
+- [ ] Sección Misión muestra fondo de cuadrícula y stickers
+- [ ] Sección Misión muestra logo como imagen
+- [ ] **Animación GSAP ScrollTrigger funciona al scrollear** (logo se anima, texto se revela)
+- [ ] Sección Contacto muestra fondo y título como imágenes
+- [ ] Sección Contacto muestra formulario y footer con stickers
+- [ ] Página creaciones muestra grilla de tarjetas
 - [ ] Dropdown de categorías en creaciones funciona
+- [ ] Filtrado dinámico en creaciones funciona
 - [ ] Build se ejecuta sin errores

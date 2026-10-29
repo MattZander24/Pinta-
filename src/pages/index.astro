@@ -1,6 +1,6 @@
 ---
 import Hero from '../components/home/Hero.astro';
-import Portfolio from '../components/home/Portfolio.astro';
+import Portfolio from '../components/home/Portfolio.jsx';
 import Mission from '../components/home/Mission.astro';
 import Contact from '../components/home/Contact.astro';
 import Layout from '../layouts/Layout.astro';
@@ -8,7 +8,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="PINTA? - Agencia Multimedia">
 	<Hero id="bienvenida" />
-	<Portfolio id="portfolio" />
+	<Portfolio id="portfolio" client:load />
 	<Mission id="mision" />
 	<Contact id="contacto" />
 </Layout>

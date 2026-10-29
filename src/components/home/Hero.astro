@@ -6,53 +6,237 @@ interface Props {
 const { id = "bienvenida" } = Astro.props;
 ---
 
-<section id={id} class="min-h-screen bg-bg-light grid-pattern relative overflow-hidden">
-  <!-- Banner superior con barra de colores -->
-  <div class="flex w-full h-4">
-    <div class="flex-1 bg-cyan"></div>
-    <div class="flex-1 bg-yellow"></div>
-    <div class="flex-1 bg-magenta"></div>
+<section id={id} class="hero-stage" aria-labelledby={`${id}-title`}>
+  <div class="hero-background" aria-hidden="true">
+    <img src="/assets/inicio/ondaFondo.png" alt="" class="hero-watermark" />
   </div>
 
-  <!-- Contenido principal -->
-  <div class="flex flex-col items-center justify-center min-h-[calc(100vh-1rem)] px-8">
-    <!-- Título central con estética de sticker -->
-    <div class="relative">
-      <div class="bg-purple-main text-white px-12 py-8 rounded-2xl shadow-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-        <h1 class="text-6xl font-bold tracking-wider">WELCOME TO PINTA?</h1>
-      </div>
-      <!-- Efecto de corte de papel -->
-      <div class="absolute -bottom-2 -right-2 w-full h-full bg-purple-light rounded-2xl -z-10 transform rotate-1"></div>
-    </div>
+  <img src="/assets/inicio/stickers/vinilo-1.png" alt="" aria-hidden="true" class="sticker vinyl-left bounce" />
+  <img src="/assets/inicio/stickers/boca-2.png" alt="" aria-hidden="true" class="sticker mouth-top bounce delay-short" />
+  <img src="/assets/inicio/stickers/star.png" alt="" aria-hidden="true" class="sticker star-left pulse" />
+  <img src="/assets/inicio/stickers/claqueta.png" alt="" aria-hidden="true" class="sticker clapper bounce delay-medium" />
+  <img src="/assets/inicio/stickers/collagePeriodico.png" alt="" aria-hidden="true" class="sticker newspaper pulse delay-long" />
+  <img src="/assets/inicio/stickers/boca-1.png" alt="" aria-hidden="true" class="sticker mouth-right bounce delay-short" />
+  <img src="/assets/inicio/stickers/vinilo-2.png" alt="" aria-hidden="true" class="sticker vinyl-bottom bounce delay-medium" />
+  <img src="/assets/inicio/stickers/star.png" alt="" aria-hidden="true" class="sticker star-right pulse" />
+  <img src="/assets/inicio/stickers/star.png" alt="" aria-hidden="true" class="sticker star-bottom pulse delay-long" />
 
-    <!-- Contenedor con placeholders para elementos flotantes -->
-    <div class="mt-16 flex gap-8 items-center justify-center">
-      <!-- Placeholder claqueta -->
-      <div class="w-24 h-24 bg-magenta rounded-full opacity-80 animate-bounce"></div>
-      <!-- Placeholder discos -->
-      <div class="w-32 h-32 bg-cyan rounded-full opacity-80 animate-pulse"></div>
-      <!-- Placeholder stickers -->
-      <div class="w-20 h-20 bg-yellow rounded-full opacity-80 animate-bounce" style="animation-delay: 0.5s;"></div>
-    </div>
-  </div>
+  <h1 id={`${id}-title`} class="hero-title">WELCOME TO PINTA?</h1>
 </section>
 
 <style>
+  .hero-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    min-height: 36rem;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: #faf8f4;
+    background-image: radial-gradient(rgba(67, 49, 39, 0.13) 0.55px, transparent 0.75px);
+    background-size: 4px 4px;
+  }
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-watermark {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0.75;
+  }
+
+  .sticker {
+    position: absolute;
+    z-index: 1;
+    height: auto;
+    object-fit: contain;
+    will-change: transform;
+  }
+
+  .vinyl-left {
+    top: 4.7%;
+    left: -9.5%;
+    width: min(19vw, 260px);
+  }
+
+  .mouth-top {
+    top: 17.5%;
+    left: 12.5%;
+    width: min(8.5vw, 122px);
+  }
+
+  .star-left {
+    top: 35.5%;
+    left: 11.5%;
+    width: min(6.5vw, 88px);
+  }
+
+  .clapper {
+    bottom: -19%;
+    left: -2%;
+    width: min(35vw, 480px);
+  }
+
+  .newspaper {
+    top: -3%;
+    right: -2%;
+    width: min(54vw, 740px);
+  }
+
+  .mouth-right {
+    right: 14.5%;
+    bottom: 16%;
+    width: min(8vw, 114px);
+  }
+
+  .vinyl-bottom {
+    right: 2.5%;
+    bottom: 2%;
+    width: min(19vw, 260px);
+  }
+
+  .star-right {
+    top: 67%;
+    right: 6%;
+    width: min(6.5vw, 88px);
+  }
+
+  .star-bottom {
+    top: 82%;
+    left: 71.5%;
+    width: min(6.5vw, 88px);
+  }
+
+  .hero-title {
+    position: absolute;
+    z-index: 2;
+    top: 48.5%;
+    left: 50%;
+    margin: 0;
+    padding: 0.04em 0.24em 0.08em;
+    transform: translate(-50%, -50%);
+    background: #792783;
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.42);
+    color: #fff;
+    font-family: var(--font-sans, "Outfit", sans-serif);
+    font-size: clamp(2rem, 5vw, 4.25rem);
+    font-weight: 600;
+    line-height: 1.15;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .bounce {
+    animation: bounce 3s infinite;
+  }
+
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+
+  .delay-short {
+    animation-delay: 0.3s;
+  }
+
+  .delay-medium {
+    animation-delay: 0.9s;
+  }
+
+  .delay-long {
+    animation-delay: 1.5s;
+  }
+
   @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
   }
-  
+
   @keyframes pulse {
     0%, 100% { opacity: 0.8; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.1); }
   }
-  
-  .animate-bounce {
-    animation: bounce 2s infinite;
+
+  @media (max-width: 640px) {
+    .hero-stage {
+      aspect-ratio: auto;
+      min-height: 36rem;
+    }
+
+    .vinyl-left {
+      top: 15%;
+      left: -19%;
+      width: min(40vw, 210px);
+    }
+
+    .mouth-top {
+      top: 19%;
+      left: 13%;
+      width: min(18vw, 100px);
+    }
+
+    .star-left {
+      top: 36%;
+      left: 12%;
+      width: min(14vw, 76px);
+    }
+
+    .clapper {
+      bottom: -14%;
+      left: -8%;
+      width: min(56vw, 320px);
+    }
+
+    .newspaper {
+      top: -1%;
+      right: -22%;
+      width: min(68vw, 390px);
+    }
+
+    .mouth-right {
+      right: 12%;
+      bottom: 17%;
+      width: min(20vw, 104px);
+    }
+
+    .vinyl-bottom {
+      right: -13%;
+      bottom: -1%;
+      width: min(43vw, 230px);
+    }
+
+    .star-right {
+      top: 68%;
+      right: 3%;
+      width: min(14vw, 76px);
+    }
+
+    .star-bottom {
+      top: 82%;
+      left: 68%;
+      width: min(14vw, 76px);
+    }
+
+    .hero-title {
+      top: 49%;
+      width: max-content;
+      max-width: calc(100% - 2rem);
+      padding: 0.12em 0.22em 0.16em;
+      font-size: clamp(1.65rem, 8vw, 3rem);
+      white-space: normal;
+    }
   }
-  
-  .animate-pulse {
-    animation: pulse 2s infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    .bounce,
+    .pulse {
+      animation: none;
+    }
   }
 </style>
