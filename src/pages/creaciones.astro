@@ -5,7 +5,7 @@ import CreationsGrid from '../components/creaciones/CreationsGrid.jsx';
 const categoria = 'all';
 ---
 
-<Layout title="Creaciones - PINTA?">
+<Layout title="Creaciones - PINTA?" loadingMode="idle">
   <main class="creations-page">
     <div class="creations-background" aria-hidden="true">
       <img src="/assets/creaciones/ondaFondoPortfolio.png" alt="" />
@@ -33,7 +33,12 @@ const categoria = 'all';
             <option value="clientes" selected={categoria === "clientes"}>Clientes</option>
           </select>
 
-          <a class="creations-close" href="/" aria-label="Volver al inicio">×</a>
+          <a
+            class="creations-close"
+            href="/#portfolio"
+            aria-label="Volver al portfolio"
+            data-return-to-portfolio
+          >×</a>
         </div>
       </header>
 
