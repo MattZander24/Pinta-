@@ -46,7 +46,6 @@ export default function Portfolio({ id = 'portfolio' }) {
                 href={`/creaciones?categoria=${category.id}`}
                 className={`portfolio-category portfolio-category--${category.color}`}
                 onMouseEnter={() => setHoveredCategory(category.id)}
-                onMouseLeave={() => setHoveredCategory('graphic-design')}
                 onFocus={() => setHoveredCategory(category.id)}
               >
                 <span>{category.title}</span>

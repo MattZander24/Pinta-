@@ -29,6 +29,7 @@ const projects = [
 
 export default function CreationsGrid({ categoria = 'all' }) {
   const [selectedCategory, setSelectedCategory] = useState(categoria);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const syncCategoryFromUrl = () => {
@@ -37,6 +38,7 @@ export default function CreationsGrid({ categoria = 'all' }) {
     };
 
     syncCategoryFromUrl();
+    setIsReady(true);
     window.addEventListener('popstate', syncCategoryFromUrl);
     return () => window.removeEventListener('popstate', syncCategoryFromUrl);
   }, []);
@@ -44,6 +46,10 @@ export default function CreationsGrid({ categoria = 'all' }) {
   const filteredProjects = selectedCategory === 'all'
     ? projects
     : projects.filter((project) => project.category === selectedCategory);
+
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <section
