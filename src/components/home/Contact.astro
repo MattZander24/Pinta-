@@ -20,14 +20,19 @@ const { id = "contacto" } = Astro.props;
   <main class="contact-main">
     <h2 id={`${id}-title`} class="contact-heading">HABLA CON PINTA?</h2>
 
-    <form class="contact-form">
+    <form class="contact-form" data-contact-form>
+      <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
+      <input type="hidden" name="subject" value="Nueva consulta desde la landing page PINTA?" />
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
       <label class="visually-hidden" for={`${id}-nombre`}>Nombre</label>
       <input
         type="text"
         id={`${id}-nombre`}
-        name="nombre"
+        name="name"
         placeholder="NOMBRE"
         autocomplete="name"
+        required
       />
 
       <label class="visually-hidden" for={`${id}-email`}>Email</label>
@@ -37,19 +42,23 @@ const { id = "contacto" } = Astro.props;
         name="email"
         placeholder="E-MAIL"
         autocomplete="email"
+        required
       />
 
       <label class="visually-hidden" for={`${id}-consulta`}>Consulta</label>
       <textarea
         id={`${id}-consulta`}
-        name="consulta"
+        name="message"
         rows="4"
         placeholder="CONTANOS..."
+        required
       ></textarea>
 
       <div class="contact-submit">
-        <button type="submit">ENVIAR</button>
+        <button type="submit" data-contact-submit>ENVIAR</button>
       </div>
+
+      <div data-contact-feedback class="contact-feedback" aria-live="polite"></div>
     </form>
   </main>
 
@@ -59,6 +68,49 @@ const { id = "contacto" } = Astro.props;
     <a href="#" aria-label="Instagram de Agencia Pinta">@agenciapinta</a>
   </footer>
 </section>
+
+<script>
+  const form = document.querySelector('[data-contact-form]');
+  const submitBtn = document.querySelector('[data-contact-submit]');
+  const feedback = document.querySelector('[data-contact-feedback]');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = "ENVIANDO...";
+    submitBtn.disabled = true;
+    feedback.textContent = '';
+    feedback.className = 'contact-feedback';
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        feedback.textContent = "¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.";
+        feedback.className = 'contact-feedback contact-feedback--success';
+        form.reset();
+      } else {
+        feedback.textContent = "Ocurrió un error al enviar la consulta. Intentá nuevamente.";
+        feedback.className = 'contact-feedback contact-feedback--error';
+      }
+
+    } catch (error) {
+      feedback.textContent = "Ocurrió un error al enviar la consulta. Intentá nuevamente.";
+      feedback.className = 'contact-feedback contact-feedback--error';
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+</script>
 
 <style>
   .contact-section {
@@ -271,6 +323,27 @@ const { id = "contacto" } = Astro.props;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  .contact-feedback {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.55rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .contact-feedback--success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+  }
+
+  .contact-feedback--error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
   }
 
   @media (max-width: 640px) {
