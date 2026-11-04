@@ -21,7 +21,7 @@ const { id = "contacto" } = Astro.props;
     <h2 id={`${id}-title`} class="contact-heading">HABLA CON PINTA?</h2>
 
     <form class="contact-form" data-contact-form>
-      <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
+      <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY || ''} />
       <input type="hidden" name="subject" value="Consulta via PINTA? Landing Page" />
       <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
 
@@ -78,6 +78,13 @@ const { id = "contacto" } = Astro.props;
     e.preventDefault();
 
     const formData = new FormData(form);
+    const accessKey = formData.get('access_key');
+
+    if (!accessKey) {
+      feedback.textContent = "El formulario no está configurado correctamente. Contactá por otras vías.";
+      feedback.className = 'contact-feedback contact-feedback--error';
+      return;
+    }
 
     const originalText = submitBtn.textContent;
     submitBtn.textContent = "ENVIANDO...";
