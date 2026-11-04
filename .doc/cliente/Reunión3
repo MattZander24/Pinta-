@@ -1,6 +1,8 @@
-Tipografía utilizada: Adelphi PE Variable.
+TIPOGRAFÍA:
 
-La misma es propietaria de adobe, por lo tanto vamos a usar una alternativa similar mientras desarrollamos.
+---
+
+Alternativa de desarrollo:
 
 Tipografía alternativa: Outfit (https://fonts.google.com/specimen/Outfit?preview.script=Latn)
 
@@ -11,4 +13,16 @@ Tipografía alternativa: Outfit (https://fonts.google.com/specimen/Outfit?previe
 body {
   font-family: 'Outfit', sans-serif;
   font-weight: 500; /* Medium */
+}
+
+---
+
+Adelphi PE Variable:
+
+URL: https://fonts.adobe.com/fonts/adelphi-pe-variable
+
+CSS:
+.example {
+  font-family: "adelphi-pe-variable",sans-serif;
+  font-variation-settings: 'wght' 100, 'opsz' 6, 'slnt' 0;
 }

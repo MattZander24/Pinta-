@@ -1,0 +1,20 @@
+* Las animaciones de #hero le parecieron bien. A lo sumo se reeverán mas adelante.
+
+* Quedó en exportarme los stickers de vinilos en mejor calidad.
+
+* Cada creación va a tener su propia página (/creaciones/:id). 
+  Quedó en hacer el wireframe. Hasta ese entonces puedo hacer solo la navegación.
+
+* Idea de fecha a presentar: Marzo. Encarar el deploy después del viaje.
+
+* En el footer el @agenciapinta va a cambiar a otro nombre y debería llevar al ig del proyecto.
+
+---
+
+* FEATURE DE SECCIÓN MISIÓN.
+
+Refe: Astronauta en https://lusion.co/
+
+A partir del 50% de la sección scrolleada, se quita el control y se scrollea hasta centrar. 
+Una vez centrado se realiza la animación del logo.
+Una vez terminada la animación, se vuelve a dar el control al usuario.
