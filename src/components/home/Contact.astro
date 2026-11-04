@@ -22,7 +22,7 @@ const { id = "contacto" } = Astro.props;
 
     <form class="contact-form" data-contact-form>
       <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
-      <input type="hidden" name="subject" value="Nueva consulta desde la landing page PINTA?" />
+      <input type="hidden" name="subject" value="Consulta via PINTA? Landing Page" />
       <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
 
       <label class="visually-hidden" for={`${id}-nombre`}>Nombre</label>
