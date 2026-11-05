@@ -22,8 +22,8 @@ const { id = "mision" } = Astro.props;
   <img src="/assets/mision/stickers/estrella-4.png" alt="" aria-hidden="true" class="mission-sticker mission-pink-star" />
 
   <div class="mission-logo" aria-hidden="true">
-    <img src="/assets/mision/logo.png" alt="" class="mission-logo-piece mission-logo-top" />
-    <img src="/assets/mision/logo.png" alt="" class="mission-logo-piece mission-logo-bottom" />
+    <img src="/assets/mision/logoTOP.png" alt="" class="mission-logo-piece mission-logo-top" />
+    <img src="/assets/mision/logoBOTTOM.png" alt="" class="mission-logo-piece mission-logo-bottom" />
   </div>
 
   <div class="mission-text">
@@ -115,14 +115,14 @@ const { id = "mision" } = Astro.props;
 
             timeline
               .to(missionLogoPieces[0], {
-                yPercent: -45,
+                yPercent: -70,
                 opacity: 0.28,
                 filter: 'blur(8px)',
                 duration: 1.2,
                 ease: 'power3.inOut',
               }, 0)
               .to(missionLogoPieces[1], {
-                yPercent: 36,
+                yPercent: 70,
                 opacity: 0.28,
                 filter: 'blur(8px)',
                 duration: 1.2,
@@ -141,12 +141,12 @@ const { id = "mision" } = Astro.props;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry && entry.intersectionRatio >= 0.66) {
+        if (entry && entry.intersectionRatio >= 0.49) {
           observer.disconnect();
           playMissionAnimation();
         }
       },
-      { threshold: 0.66 },
+      { threshold: 0.49 },
     );
 
     observer.observe(missionSection);
@@ -168,7 +168,6 @@ const { id = "mision" } = Astro.props;
     position: absolute;
     inset: 0;
     z-index: 0;
-    /*overflow: hidden;*/
   }
 
   .mission-grid img {
@@ -183,26 +182,25 @@ const { id = "mision" } = Astro.props;
     z-index: 1;
     top: 50%;
     left: 50%;
-    width: min(48vw, 650px);
+    width: min(78vw, 780px);
     aspect-ratio: 3649 / 2128;
     transform: translate(-50%, -50%);
   }
 
   .mission-logo-piece {
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
+    left: 6%;
+    width: 88%;
+    height: auto;
     will-change: transform, opacity, filter;
   }
 
   .mission-logo-top {
-    clip-path: inset(0 0 50% 0);
+    top: 6%;
   }
 
   .mission-logo-bottom {
-    clip-path: inset(50% 0 0 0);
+    bottom: 6%;
   }
 
   .mission-text {
@@ -297,7 +295,20 @@ const { id = "mision" } = Astro.props;
 
   @media (max-width: 760px) {
     .mission-logo {
-      width: 82vw;
+      width: 100vw;
+    }
+
+    .mission-logo-piece {
+      left: 9%;
+      width: 82%;
+    }
+
+    .mission-logo-top {
+      top: 9%;
+    }
+
+    .mission-logo-bottom {
+      bottom: 9%;
     }
 
     .mission-text {
